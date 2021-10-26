@@ -1,0 +1,8 @@
+package project1.ver06;
+
+public class MenuSelectException extends Exception{
+	public MenuSelectException(String a) {
+		System.out.println(a);
+		
+	}
+}

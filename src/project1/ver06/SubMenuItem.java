@@ -1,4 +1,4 @@
-package project1.ver05;
+package project1.ver06;
 
 public interface SubMenuItem {
 	public static final int NORMAL = 1;
