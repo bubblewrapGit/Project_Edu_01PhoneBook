@@ -9,27 +9,14 @@ import project1.ver05.SubMenuItem;
 
 public class PhoneBookVer05 implements MenuItem{
 	
-	public static int userAns = 0;
-	
-	@Override
-	public void printMenu() {
-		System.out.println("선택하시오...");
-		System.out.println("1. 데이터 입력");
-		System.out.println("2. 데이터 검색");
-		System.out.println("3. 데이터 삭제");
-		System.out.println("4. 주소록 출력");
-		System.out.println("5. 프로그램 종료");
-	}
-	
 	public static void main(String[] args) {
 		//String name, String phoneNumber, String birthday
-		PhoneBookVer05 PhoneBookVer05 = new PhoneBookVer05();
-		
 		Scanner scan = new Scanner(System.in);
 		PhoneBookManager manager = new PhoneBookManager(100);
 		
+		int userAns = 0;
 		while(true) {
-			PhoneBookVer05.printMenu();
+			manager.printMenu();
 			userAns = scan.nextInt();
 			switch (userAns) {
 			case ADDD:

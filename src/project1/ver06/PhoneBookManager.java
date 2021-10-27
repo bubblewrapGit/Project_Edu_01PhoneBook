@@ -7,7 +7,16 @@ public class PhoneBookManager implements SubMenuItem{
 	private PhoneInfo[] myPhoneBook;
 	private int numOfmyPhoneBook;
 	
-
+	public void printMenu() {
+		System.out.println("[ 메뉴선택 ]");
+		System.out.println("1. 데이터 입력");
+		System.out.println("2. 데이터 검색");
+		System.out.println("3. 데이터 삭제");
+		System.out.println("4. 주소록 출력");
+		System.out.println("5. 프로그램 종료");
+		System.out.print("입력하세요 : ");
+	}
+	
 	public PhoneBookManager(int num) {
 		// num크기의 객체배열 생성
 		myPhoneBook = new PhoneInfo[num];

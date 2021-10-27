@@ -6,5 +6,4 @@ public interface MenuItem {
 	public static final int DELT = 3;
 	public static final int SHOW = 4;
 	
-	void printMenu();
 }

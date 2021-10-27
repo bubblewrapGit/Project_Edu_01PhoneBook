@@ -1,4 +1,4 @@
-package project1.ver06;
+package project1.ver07;
 
 public interface MenuItem {
 	public static final int ADDD = 1;
