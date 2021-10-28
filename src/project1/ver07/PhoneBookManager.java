@@ -39,54 +39,61 @@ public class PhoneBookManager implements SubMenuItem{
 		System.out.print("이름 : ");		name = scan.next();
 		System.out.print("전화번호 : ");	phoneNumber = scan.next();
 		
+		PhoneInfo info = null;
+		
 		switch (userInput) {
 		case NORMAL:
-			myPhoneBook.add(new PhoneInfo(name, phoneNumber));
+			PhoneInfo nInfo = new PhoneInfo(name, phoneNumber);
+			info = nInfo;
 			break;
 		case SCHOOL:	
 			System.out.print("전공 : ");		major = scan.next();
 			System.out.print("학년 : ");		grade = scan.nextInt();
 			
-			myPhoneBook.add(new PhoneSchoolInfo(name, phoneNumber, major, grade));
+			PhoneSchoolInfo sInfo = new PhoneSchoolInfo(name, phoneNumber, major, grade);
+			info = sInfo;
 			break;
 		case COMPANY:
 			System.out.print("회사 : ");		companyName = scan.next();
 			
-			myPhoneBook.add(new PhoneCompanyInfo(name, phoneNumber, companyName));
+			PhoneCompanyInfo cInfo = new PhoneCompanyInfo(name, phoneNumber, companyName);
+			info = cInfo;
 			break;
 		}
 		
-		if(myPhoneBook.equals(name)) {
-			System.out.println("참이냐 거짓이냐 : " + myPhoneBook.equals(name));
-			System.out.println("이미 저장된 데이터입니다.");
-			System.out.print("덮어쓸까요? Y(y) / N(n) : ");
-			String answer = scan.nextLine();
+		if(myPhoneBook.add(info) == false) {
+			// HashSet의 add메서드는 hashCode와 equals 메서드를 자동으로 사용한다.
+			// > HashSet의 add메서드를 사용할 시 hashCode와 equals 메서드를 오버라이딩해줘야하고 필요한 쿼리로 재정의 해줘야함.
+			// ※ HashSet은 중복값을 허용하지 않는다.
 			
-			boolean toggle = true;
+			// >> 비교값이 같으면 equals메소드에서 true
+			// >>>> 중복됨으로 add메서드는 fasle를 반환한다.
 			
-			while(toggle) {
-				switch (answer) {
-				case "y": case "Y":	
-					System.out.println("-------[ 입력한 정보가 저장되었습니다 ]-------");
-					toggle = false;
-					break;
-				case "n": case "N":
-					System.out.println("-------[ 저장하지 않습니다 ]-------");
-					name = null;
-					toggle = false;
-					break;
-				default:
-					System.out.println("-------[ 잘못입력하셨습니다 ]-------");
-					continue;
-				}
+			// >> 비교값이 다르면 equals메소드에서 false
+			// >>>> 중복되는 값이 없음으로 add메서드는 ture 반환한다.
+			
+			// add로 들어가보면 add메서드는 boolean타입으로 true/false를 반환한다.
+			System.out.println("이미 저장된 데이터입니다.\r\n"
+					+ "덮어쓸까요? Y(y) / N(n)");
+			scan.nextLine();
+			String userAns = scan.nextLine();
+			
+			if(userAns.equalsIgnoreCase("y")) {
+				// 저장소 : '홍길동' && 비교값 : '홍길동'
+				myPhoneBook.remove(info); // >> 저장소의 '홍길동' 삭제
+				myPhoneBook.add(info);	  // >> 비교값의 '홍길동' 입력
+				System.out.println("덮어썼습니다.");
+			}else {
+				System.out.println("저장하지 않습니다.");
 			}
-		}else{
-			System.out.println("false반환");
+			
+		}else {
+			myPhoneBook.add(info);
+			System.out.println("일반적인 저장입니다.");
 		}
-		
+			
 		System.out.println("데이터 입력이 완료되었습니다.");
 	}
-	
 	
 	
 	public void dataSearch() {
@@ -141,7 +148,8 @@ public class PhoneBookManager implements SubMenuItem{
 	}
 	
 	public void showAllDate() {
-		System.out.println("전체정보를 출력합니다.");
+		System.out.println();
+		System.out.println("----------[ 전체정보를 출력합니다 ]----------");
 		
 		Iterator<PhoneInfo> itr = myPhoneBook.iterator();
 		

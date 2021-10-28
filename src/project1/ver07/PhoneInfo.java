@@ -11,7 +11,8 @@ public class PhoneInfo {
 	}
 
 	public void showPhoneInfo() {
-		System.out.printf("이름 : %s | 전화번호 : %s \n", name, phoneNumber);
+		System.out.println("이름 : " + name);
+		System.out.println("  · 전화번호 : " + phoneNumber);
 	}
 	
 	@Override
@@ -22,24 +23,12 @@ public class PhoneInfo {
 	@Override
 	public boolean equals(Object obj) {
 		PhoneInfo pi = (PhoneInfo)obj;
-	  	if(obj instanceof PhoneInfo) {
-	 
-			System.out.println("이건 어떠냐 : " + name.equals(((PhoneInfo) obj).name));
-			return name.equals(((PhoneInfo) obj).name);
-		}else {
+		if(pi.name.equals(this.name)) {
+			return true;
+		}else {	
 			return false;
 		}
-
-
-//		if(pi.name.equals(this.name)) {
-//			return true;
-//		}else {
-//			return false;				
-//		}
-
 	}
-	
-	
-	
+
 }
 
