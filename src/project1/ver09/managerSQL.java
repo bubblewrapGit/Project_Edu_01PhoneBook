@@ -71,7 +71,6 @@ public class managerSQL extends IConnectImpl{
 			
 		}catch(SQLException e) {
 			System.out.println("[ 실행에 문제가 발생하였습니다 ]");
-			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println("[ 알수 없는 오류가 발생하였습니다 ]");
 		}

@@ -54,15 +54,13 @@ public class PhoneBookVer08 implements MenuItem{
 						return;
 					}					
 				}else {
-					MenuSelectException menuSelectErr = new MenuSelectException("------------[ 올바른 숫자가 아닙니다 ]------------");
+					MenuSelectException menuSelectErr = new MenuSelectException("------------[ 올바른 메뉴를 입력해주세요 ]------------");
 					continue;
 				} 
 			}catch (InputMismatchException e) {				
-				System.out.println("------------[ 입력값이 올바르지 않습니다 ]------------");
-				e.printStackTrace();
+				System.out.println("------------[ 메뉴 번호를 입력해주세요 ]------------");
 			}catch(NullPointerException e) {
 				System.out.println("------------[ 입력 된 값이 없습니다 ]------------");
-				e.printStackTrace();
 			}
 		}
 	}

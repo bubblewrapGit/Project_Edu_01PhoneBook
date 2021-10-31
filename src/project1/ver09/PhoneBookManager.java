@@ -25,6 +25,7 @@ public class PhoneBookManager{
 		System.out.println("5. 프로그램 종료");
 	}
 	
+	
 	public void addPhoneBook() {
 		System.out.println("데이터 입력을 시작합니다...");
 		Scanner scan = new Scanner(System.in);

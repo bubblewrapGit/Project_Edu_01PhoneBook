@@ -16,6 +16,8 @@ public class PhoneBookVer09 {
 		PhoneBookManager manager = new PhoneBookManager(100);
 		managerSQL mgr = new managerSQL();
 		
+		mgr.makeTable();
+		
 		while(true) {
 			manager.printMenu();
 			int userAns = scan.nextInt();
